@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="CEP.SmartWallet.Api/CEP.SmartWallet.Api.csproj" />
+  <Project Path="CEP.SmartWallet.Application/CEP.SmartWallet.Application.csproj" />
+  <Project Path="CEP.SmartWallet.Domain/CEP.SmartWallet.Domain.csproj" />
+  <Project Path="CEP.SmartWallet.Infrastructure/CEP.SmartWallet.Infrastructure.csproj" />
+</Solution>

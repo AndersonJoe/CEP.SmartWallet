@@ -1,0 +1,6 @@
+@CEP.SmartWallet.Domain_HostAddress = http://localhost:5022
+
+GET {{CEP.SmartWallet.Domain_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

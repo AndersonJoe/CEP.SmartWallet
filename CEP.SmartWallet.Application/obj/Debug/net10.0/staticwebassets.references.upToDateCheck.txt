@@ -1,0 +1,1 @@
+C:\Users\kpopute\source\repos\CEP.SmartWallet\CEP.SmartWallet.Domain\obj\Debug\net10.0\staticwebassets.build.json
