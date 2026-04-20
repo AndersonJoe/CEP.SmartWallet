@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cep-smartwallet-api
+  namespace: cep-smartwallet
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: cep-smartwallet-db
+  template:
+    metadata:
+      labels:
+        app: cep-smartwallet-db
+    spec:
+      containers:
+        - name: cep-smartwallet-db
+          image: mcr.microsoft.com/mssql/server:2022-latest
+          ports:
+            - containerPort: 1433
+          env:
+            - name: ACCEPT_EULA
+              value: "Y"
+            - name: SA_PASSWORD
+              value: "YourStrong!Passw0rd"
+          volumeMounts:
+            - name: mssql-data
+              mountPath: /var/opt/mssql
+      volumes:
+        - name: mssql-data
+          emptyDir: {}
+
+          
