@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cep-smartwallet-ui
+  namespace: cep-smartwallet
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: cep-smartwallet-ui
+  template:
+    metadata:
+      labels:
+        app: cep-smartwallet-ui
+    spec:
+      containers:
+        - name: cep-smartwallet-ui
+          image: cep-smartwallet-ui:latest
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 80

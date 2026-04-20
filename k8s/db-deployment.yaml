@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: cep-smartwallet-api
+  name: cep-smartwallet-db
   namespace: cep-smartwallet
 spec:
   replicas: 1
@@ -29,5 +29,3 @@ spec:
       volumes:
         - name: mssql-data
           emptyDir: {}
-
-          

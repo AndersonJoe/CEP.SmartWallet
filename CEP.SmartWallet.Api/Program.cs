@@ -27,14 +27,14 @@ app.UseCors("AllowAll");
 app.MapControllers();
 
 // Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
+//if (app.Environment.IsDevelopment())
 {
     app.MapOpenApi();
     app.UseSwagger();
     app.UseSwaggerUI();
 }
 
-app.UseHttpsRedirection();
+//app.UseHttpsRedirection();
 
 using (var scope = app.Services.CreateScope())
 {
@@ -54,8 +54,8 @@ using (var scope = app.Services.CreateScope())
             dbRetries--;
             if (dbRetries == 0)
             {
-                Console.WriteLine("Exceeded maximum retry attempts for database migration.");
-                throw;
+                Console.WriteLine("Exceeded maximum retry attempts for database migration !!!");
+                //throw;
             }
             Console.WriteLine($"Retrying database migration... Attempts left: {dbRetries}");
             Thread.Sleep(3000); // Wait for 3 seconds before retrying

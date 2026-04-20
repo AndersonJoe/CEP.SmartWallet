@@ -13,6 +13,8 @@ function App() {
   const [result, setResult] = useState("");
   const [error, setError] = useState("");
   
+  const API_URL = import.meta.env.VITE_API_URL;
+
   const handleChange = (e) => {
     setForm({
       ...form,
@@ -30,7 +32,7 @@ function App() {
     }
     
     try {
-      const response = await fetch ("http://localhost:5000/api/transactions", {
+      const response = await fetch (`${API_URL}/api/transactions`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -56,7 +58,7 @@ function App() {
   const loadTransactions = async () => {
     setLoading(true);
 
-    const res = await fetch ("http://localhost:5000/api/transactions");
+    const res = await fetch (`${API_URL}/api/transactions`);
     const data = await res.json();
     setTransactions (data);
     setLoading(false);

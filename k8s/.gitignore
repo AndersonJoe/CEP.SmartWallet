@@ -1,0 +1,56 @@
+# ------------------------
+# .NET
+# ------------------------
+bin/
+obj/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Rider / VS Code
+.vs/
+.idea/
+.vscode/
+
+# Logs
+*.log
+
+# ------------------------
+# ASP.NET / config
+# ------------------------
+appsettings.Development.json
+secrets.json
+
+# ------------------------
+# Node / React (Vite)
+# ------------------------
+node_modules/
+dist/
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# ------------------------
+# Docker
+# ------------------------
+*.dockerignore
+
+# ------------------------
+# OS files
+# ------------------------
+.DS_Store
+Thumbs.db
+
+# ------------------------
+# Kubernetes (optional logs)
+# ------------------------
+*.yaml.bak
+
+# ------------------------
+# Coverage / temp
+# ------------------------
+coverage/
+*.tmp
+*.temp
