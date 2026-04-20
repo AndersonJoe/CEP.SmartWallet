@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name:cep-smartwallet-api
+  namespace:cep-smartwallet
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: cep-smartwallet-api
+  template:
+    metadata:
+      labels:
+        app: cep-smartwallet-api
+    spec:
+      containers:
+        - name: cep-smartwallet-api
+          image: cep-smartwallet-api:latest
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort:8080
+          env:
+            - name: ConnectionStrings__DefaultConnection
+              value: "Server=cep-smartwallet-db;Database=SmartWalletDb;User Id=sa;Password=YourStrong!Passw0rd;TrustServerCertificate=True"

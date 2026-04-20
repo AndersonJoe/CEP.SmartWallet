@@ -1,6 +1,4 @@
-using CEP.SmartWallet.Application;
 using CEP.SmartWallet.Application.Transactions.Commands.CreateTransaction;
-using MediatR;
 using CEP.SmartWallet.Infrastructure.Persistence;
 using CEP.SmartWallet.Infrastructure.Services;
 using CEP.SmartWallet.Application.Abstractions;
@@ -41,7 +39,28 @@ app.UseHttpsRedirection();
 using (var scope = app.Services.CreateScope())
 {
     var db = scope.ServiceProvider.GetRequiredService<AppDbContext>();
-    db.Database.Migrate();
+
+    var dbRetries = 10;
+    while (dbRetries > 0)
+    {
+        try
+        {
+            db.Database.Migrate();
+            break;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Database migration failed: {ex.Message}");
+            dbRetries--;
+            if (dbRetries == 0)
+            {
+                Console.WriteLine("Exceeded maximum retry attempts for database migration.");
+                throw;
+            }
+            Console.WriteLine($"Retrying database migration... Attempts left: {dbRetries}");
+            Thread.Sleep(3000); // Wait for 3 seconds before retrying
+        }
+    }
 }
 
 app.Run();
